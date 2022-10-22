@@ -26,8 +26,8 @@ function setup() {
 
 function draw() {
 	background("green");
-	x = x + deltaX
-	y = y + deltaY
+	x = x + deltaX;
+	y = y + deltaY;
 
 	drawFlower(x, y, diameter);
 	if (x + diameter >= width) {
