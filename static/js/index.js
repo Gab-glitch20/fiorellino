@@ -22,13 +22,11 @@ function setup() {
 function draw() {
 	background("green");
 	let diameter = 30;
-	let nCelle = diameter*2;
+	let nCelle = diameter * 2;
 	let x = 0;
 	let y = 0;
 	let righe = height / nCelle;
 	let colonne = width / nCelle;
-
-	
 
 	for (let j = 0; j < righe; j++) {
 		for (let i = 0; i < colonne; i++) {
