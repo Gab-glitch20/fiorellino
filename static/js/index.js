@@ -1,10 +1,5 @@
 let width = 600;
 let height = 300;
-let diameter = 50;
-let deltaX = 5;
-let deltaY = 5;
-let x = 0 + diameter;
-let y = 0 + diameter;
 
 function drawFlower(x, y, d) {
 	let raggio = d / 2;
@@ -26,23 +21,21 @@ function setup() {
 
 function draw() {
 	background("green");
-	x = x + deltaX;
-	y = y + deltaY;
+	let diameter = 30;
+	let nCelle = diameter*2;
+	let x = 0;
+	let y = 0;
+	let righe = height / nCelle;
+	let colonne = width / nCelle;
 
-	drawFlower(x, y, diameter);
-	if (x + diameter >= width) {
-		deltaX = -deltaX;
-	}
+	
 
-	if (x - diameter <= 0) {
-		deltaX = -deltaX;
-	}
-
-	if (y + diameter >= height) {
-		deltaY = -deltaY;
-	}
-
-	if (y - diameter <= 0) {
-		deltaY = -deltaY;
+	for (let j = 0; j < righe; j++) {
+		for (let i = 0; i < colonne; i++) {
+			drawFlower(x + diameter, y + diameter, diameter);
+			x = x + diameter * 2;
+		}
+		x = 0;
+		y = y + diameter * 2;
 	}
 }
