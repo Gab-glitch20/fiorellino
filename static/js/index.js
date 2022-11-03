@@ -1,9 +1,10 @@
-let d = 30;
-let w = 600;
-let h = 300;
-let x = d ;
-let y = d ;
-
+let width = 600;
+let height = 300;
+let diameter = 50;
+let deltaX = 5;
+let deltaY = 5;
+let x = 0 + diameter;
+let y = 0 + diameter;
 function drawFlower(x, y, d) {
 	let raggio = d / 2;
 	let border = 4;
@@ -17,19 +18,24 @@ function drawFlower(x, y, d) {
 	fill("rgb(255, 51, 0)");
 	circle(x, y, d);
 }
-
 function setup() {
-	createCanvas(w, h);
-	background("green");
-	frameRate(5);
+	createCanvas(width, height);
 }
 
 function draw() {
-	drawFlower(x, y, d);
+	background("green");
+	x = x + deltaX
+	y = y + deltaY
+	x = x + deltaX;
+	y = y + deltaY;
 
-	x = x + d*2;
-	if (x >= w) {
-		x = d ;
-		y = y + d*2;
+	drawFlower(x, y, diameter);
+	if (x + diameter >= width || x - diameter <= 0) {
+		deltaX = -deltaX;
 	}
+	
+	if (y + diameter >= height || y - diameter <= 0) {
+		deltaY = -deltaY;
+	}
+	
 }
