@@ -1,13 +1,14 @@
 let width = 600;
 let height = 300;
-let diameter = 50;
-let deltaX = 5;
-let deltaY = 5;
-let x = 0 + diameter;
-let y = 0 + diameter;
+let x;
+let y;
+let diameter;
+let deltaX;
+let deltaY;
+
 function drawFlower(x, y, d) {
 	let raggio = d / 2;
-	let border = 4;
+	let border = 2;
 	stroke("rgb(0,0,0)");
 	strokeWeight(border);
 	fill("rgb(255, 153, 51)");
@@ -20,22 +21,25 @@ function drawFlower(x, y, d) {
 }
 function setup() {
 	createCanvas(width, height);
+	deltaX = -2;
+	deltaY = 5;
+	
+	diameter = random(25, 60);
+	x = random(0+diameter, width-diameter);
+	y = random(0+diameter, height-diameter);
 }
 
 function draw() {
 	background("green");
-	x = x + deltaX
-	y = y + deltaY
+	drawFlower(x, y, diameter);
 	x = x + deltaX;
 	y = y + deltaY;
 
-	drawFlower(x, y, diameter);
-	if (x + diameter >= width || x - diameter <= 0) {
-		deltaX = -deltaX;
+	if (x + diameter > width || x - diameter < 0) {
+		deltaX = -1 * deltaX;
 	}
-	
-	if (y + diameter >= height || y - diameter <= 0) {
-		deltaY = -deltaY;
+
+	if (y + diameter > height || y - diameter < 0) {
+		deltaY = -1 * deltaY;
 	}
-	
 }
